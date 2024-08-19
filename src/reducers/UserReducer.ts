@@ -5,10 +5,10 @@ import { UserType } from "@/types/User";
 
 
 
-export const useUserReducer = (state: UserType | null, action: UserReducerType) => {
-    switch(action.action) {
+export const userReducer: UserReducerType = (prevState, action) => {
+    switch(action.type) {
         case "set":
-            return {...action.payload};
+            return {...action.payload!};
             break;
         case "initialize":
             return action.payload;

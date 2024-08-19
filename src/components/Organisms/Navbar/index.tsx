@@ -11,7 +11,9 @@ const Navbar = ({ children }: props) => {
 
     return(
         <header className={styles.navbar}>
-            {children}
+            <nav>
+                {children}
+            </nav>
         </header>
     );
 }

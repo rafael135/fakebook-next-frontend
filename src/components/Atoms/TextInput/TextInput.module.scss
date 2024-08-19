@@ -1,11 +1,15 @@
 .input {
-    padding: 4px 12px;
-    background-color: rgb(250, 250, 250);
+    padding: 6px 14px;
+    background-color: rgb(235, 235, 235);
     
-    @apply border border-solid border-gray-600/40 rounded-md;
+    @apply text-slate-700 border border-solid border-gray-600/40 rounded-3xl;
 
     &:focus, &:active {
         outline: none;
+    }
+
+    &::placeholder {
+        @apply text-slate-500;
     }
 }
 .input.errored {

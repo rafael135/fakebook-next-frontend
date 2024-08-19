@@ -1,0 +1,5 @@
+.sideMenu {
+    min-height: calc(100vh - 64px);
+    width: 280px;
+    @apply flex flex-col border-solid border-r border-r-gray-600/40;
+}

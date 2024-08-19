@@ -1,8 +1,9 @@
 import { UserType } from "./User"
 
 
-
-export type UserReducerType = {
+export type UserReducerActionType = {
     payload: UserType | null;
-    action: "set" | "initialize";
-};
+    type: "initialize" | "set";
+}
+
+export type UserReducerType = (prevState: UserType | null, action: UserReducerActionType) => UserType | null;

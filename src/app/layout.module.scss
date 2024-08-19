@@ -1,0 +1,8 @@
+.layoutContainer {
+    min-height: calc(100vh - 64px);
+    @apply flex flex-row;
+
+    main {
+        @apply flex-1;
+    }
+}
