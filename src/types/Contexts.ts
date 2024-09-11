@@ -1,4 +1,5 @@
-import { UserReducerActionType } from "./Reducers";
+import { PostType } from "./Post";
+import { PostReducerActionType, UserReducerActionType } from "./Reducers";
 import { UserType } from "./User";
 
 
@@ -18,4 +19,11 @@ export type SearchContextType = {
     filter: SearchContextFilterType | null;
     setTerm: React.Dispatch<React.SetStateAction<string>>;
     setFilter: React.Dispatch<React.SetStateAction<SearchContextFilterType>>;
+} | null;
+
+
+
+export type PostContextType = {
+    posts: PostType[];
+    dispatchPosts: React.Dispatch<PostReducerActionType>;
 } | null;

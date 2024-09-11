@@ -6,6 +6,7 @@ import ButtonWidget from "../ButtonWidget";
 import { CiImageOn, CiCalendar } from "react-icons/ci";
 import { BsCameraVideo, BsEmojiSmile } from "react-icons/bs";
 import { TfiTarget } from "react-icons/tfi";
+import TextInputMask from "@/components/Atoms/TextInputMask";
 
 
 type props = {

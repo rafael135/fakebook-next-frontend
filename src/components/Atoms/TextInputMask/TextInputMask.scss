@@ -1,0 +1,25 @@
+.input {
+    padding: 6px 14px;
+    background-color: rgb(235, 235, 235);
+    
+    @apply text-slate-700 border border-solid border-gray-600/40 rounded-3xl;
+
+    &:focus, &:active {
+        outline: none;
+    }
+
+    &::placeholder {
+        @apply text-slate-500;
+    }
+}
+.input.errored {
+    @apply border border-solid border-red-600;
+}
+
+.inputLabel {
+    @apply text-xl;
+}
+
+.errorLabel {
+    @apply text-red-600;
+}
