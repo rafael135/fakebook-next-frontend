@@ -9,7 +9,7 @@ import { createContext, useEffect, useReducer } from "react";
 export const PostContext = createContext<PostContextType>(null);
 
 
-const POSTS_KEY = "posts#sjhdis";
+const POSTS_KEY = "posts";
 
 type props = {
     children: React.ReactNode;

@@ -1,8 +1,9 @@
+import { UserType } from "./User";
 
 
 export type PostType = {
     uuid: string;
-    authorId: string;
+    author: UserType;
     body: string;
     likes: number;
     dislikes: number;
