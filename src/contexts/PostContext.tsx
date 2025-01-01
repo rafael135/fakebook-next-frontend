@@ -17,7 +17,7 @@ type props = {
 
 export const PostContextProvider = ({ children }: props) => {
 
-    const [posts, dispatchPosts] = useReducer<PostReducerType>(postReducer, []);
+    const [posts, dispatchPosts] = useReducer(postReducer, []);
 
 
     useEffect(() => {

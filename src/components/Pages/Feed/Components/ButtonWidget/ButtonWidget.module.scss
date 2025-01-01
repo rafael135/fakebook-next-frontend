@@ -1,7 +1,7 @@
 .buttonWidget {
-    @apply p-2 flex justify-center items-center rounded-full transition-all;
+    @apply p-2 flex justify-center items-center gap-2 rounded-md transition-all;
 
     &:hover {
-        @apply bg-black/10;
+        @apply bg-black/5;
     }
 }

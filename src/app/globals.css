@@ -35,10 +35,16 @@ body {
 }
 	*/
 
+@font-face {
+	font-family: 'Inter';
+	font-display: swap;
+	src: url("/fonts/Inter/Inter-VariableFont_opsz,wght.ttf") format('ttf');
+}
 	
 * {
-	font-family: Arial, Helvetica, sans-serif;
+	/*font-family: Arial, Helvetica, sans-serif;*/
 	box-sizing: border-box;
+	text-rendering: optimizeLegibility;
 }
 
 body {

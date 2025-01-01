@@ -12,7 +12,7 @@ const LOGGED_USER_KEY = "loggedUser";
 const LOGGED_USER_TOKEN_KEY = "loggedUserToken";
 
 export const UserContextProvider = ({ children }: { children: ReactNode }) => {
-    const [loggedUser, dispatchLoggedUser] = useReducer<UserReducerType>(userReducer, null);
+    const [loggedUser, dispatchLoggedUser] = useReducer(userReducer, null);
     const [token, setToken] = useState<string | null>(null);
     const [initialized, setInitialized] = useState<boolean>(false);
 

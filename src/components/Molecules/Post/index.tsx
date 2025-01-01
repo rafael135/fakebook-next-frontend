@@ -5,9 +5,11 @@ import Image from "next/image";
 import { PostType } from "@/types/Post";
 import ButtonWidget from "@/components/Pages/Feed/Components/ButtonWidget";
 import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "@/contexts/UserContext";
 import { IoShareSocial } from "react-icons/io5";
+import { ThumbsUp, ThumbsDown, Share2 } from "lucide-react";
+import Label from "@/components/Atoms/Label";
 
 
 type props = {
@@ -15,7 +17,7 @@ type props = {
     post: PostType;
 }
 
-const Post = ({ className, post }: props) => {
+const PostComponent = ({ className, post }: props) => {
 
     const userCtx = useContext(UserContext)!;
 
@@ -57,30 +59,37 @@ const Post = ({ className, post }: props) => {
 
                     <ButtonWidget
                         className={`${styles.likeButton}`}
+                        type="ghost"
                         onClick={handleLikeClick}
                         title="Like"
                     >
-                        <AiOutlineLike className="h-6 w-6" />
+                        
+                        <ThumbsUp className="h-5 w-5" />
+                        {post.likes}
                     </ButtonWidget>
 
 
 
                     <ButtonWidget
                         onClick={handleDislikeClick}
+                        type="ghost"
                         className={styles.dislikeButton}
                         title="Dislike"
                     >
-                        <AiOutlineDislike className="h-6 w-6" />
+                        <ThumbsDown className="h-5 w-5" />
+                        {post.dislikes}
                     </ButtonWidget>
 
 
 
                     <ButtonWidget
                         onClick={handleDislikeClick}
+                        type="ghost"
                         className={styles.shareButton}
                         title="Dislike"
                     >
-                        <IoShareSocial className="h-6 w-6" />
+                        <Share2 className="h-5 w-5" />
+                        Compartilhar
                     </ButtonWidget>
 
                 </div>
@@ -88,5 +97,9 @@ const Post = ({ className, post }: props) => {
         </div>
     );
 }
+
+const Post = React.memo(PostComponent, (prevProps, nextProps) => {
+    return prevProps.post.id != nextProps.post.id;
+});
 
 export default Post;

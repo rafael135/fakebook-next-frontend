@@ -1,3 +1,4 @@
+import { MenuContextProvider } from "@/contexts/MenuContext"
 import { PostContextProvider } from "@/contexts/PostContext"
 import { SearchContextProvider } from "@/contexts/SearchContext"
 import { UserContextProvider } from "@/contexts/UserContext"
@@ -10,13 +11,15 @@ const Providers = ({ children }: { children: ReactNode }) => {
 
 
     return(
-        <UserContextProvider>
-            <PostContextProvider>
-                <SearchContextProvider>
-                    {children}
-                </SearchContextProvider>
-            </PostContextProvider>
-        </UserContextProvider>
+        <MenuContextProvider>
+            <UserContextProvider>
+                <PostContextProvider>
+                    <SearchContextProvider>
+                        {children}
+                    </SearchContextProvider>
+                </PostContextProvider>
+            </UserContextProvider>
+        </MenuContextProvider>
     );
 }
 

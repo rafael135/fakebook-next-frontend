@@ -1,14 +1,13 @@
-import { FriendType } from "./Friend";
+import { UserRelationType } from "./UserRelation";
 
 
 
 
 export type UserType = {
-    uuid: string;
+    id: string;
     avatar: string | null;
     name: string;
     email: string;
     phone: string;
-    friends: FriendType[];
-    
+    friends: UserRelationType[];
 };

@@ -11,6 +11,12 @@ export type UserContextType = {
 } | null;
 
 
+export type MenuContextType = {
+    showSideMenu: boolean;
+    setShowSideMenu: React.Dispatch<boolean>;
+} | null;
+
+
 
 export type SearchContextFilterType = "friends" | "profiles" | "posts" | "pages" | "groups" | null;
 

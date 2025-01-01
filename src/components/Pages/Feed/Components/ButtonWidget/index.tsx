@@ -5,17 +5,20 @@ import styles from "./ButtonWidget.module.scss";
 type props = {
     className?: string;
     children: ReactNode;
+    type: "normal" | "ghost";
     disabled?: boolean;
     onClick: (() => void) | (() => Promise<void>);
     title?: string;
 }
 
-const ButtonWidget = ({ className, children, disabled, onClick, title }: props) => {
+const ButtonWidget = ({ className, children, type, disabled, onClick, title }: props) => {
 
 
     return(
         <button
-            className={`${styles.buttonWidget} ${className ?? ""}`}
+            className={`
+                ${styles.buttonWidget} ${className ?? ""}
+            `}
             disabled={disabled}
             onClick={onClick}
             title={title}

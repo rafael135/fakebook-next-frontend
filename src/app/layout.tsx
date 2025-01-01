@@ -6,6 +6,7 @@ import Providers from "./providers";
 import SideMenu from "@/components/Organisms/SideMenu";
 
 import styles from "./layout.module.scss";
+import Logo from "./components/Logo";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,7 @@ export default function RootLayout({
 			<body className={inter.className}>
 				<Providers>
 					<Navbar>
-						d
+						<Logo />
 					</Navbar>
 					
 					<div className={`${styles.layoutContainer}`}>

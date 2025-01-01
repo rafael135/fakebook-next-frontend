@@ -1,6 +1,6 @@
 .post {
 
-    @apply flex flex-col rounded-lg border border-solid border-gray-600/40;
+    @apply flex flex-col rounded-lg border border-solid border-gray-600/40 shadow-lg;
 
     .head {
         @apply p-1.5 border-b border-solid border-b-gray-600/40;
@@ -10,7 +10,7 @@
         }
 
         .authorName {
-            @apply ms-1 mt-1 text-xl text-slate-700;
+            @apply ms-1 mt-1 font-semibold text-xl text-slate-800;
         }
     }
 
@@ -26,9 +26,15 @@
         @apply border-t border-solid border-t-gray-600/40;
 
         .footerActions {
-            @apply w-full flex flex-row;
+            @apply p-2 w-full flex flex-row justify-between items-center;
 
-            
+                button {
+                    flex: 1;
+                    @apply items-center transition-all;
+
+
+                }
+                
                 .likeButton {
 
                     &.liked {
@@ -49,9 +55,13 @@
                 }
 
                 .shareButton {
-                    @apply ms-auto;
+                    
                 }
             
+        }
+
+        .footerDetails {
+            @apply p-4 flex flex-row;
         }
     }
 
