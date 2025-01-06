@@ -1,11 +1,10 @@
-
-
+import LoginPage from "@/components/Pages/Login";
 
 const Login = () => {
 
 
     return(
-        <div>ddd</div>
+        <LoginPage />
     )
 }
 

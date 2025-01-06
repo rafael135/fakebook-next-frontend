@@ -7,20 +7,16 @@ import FastPost from "./Components/FastPost";
 import Post from "../../Molecules/Post";
 import { UserType } from "@/types/User";
 import Col from "@/components/Molecules/Col";
+import { usePosts } from "@/contexts/PostContext";
 
 
 
 
 const Feed = () => {
 
-    const testUser: UserType = {
-        id: "sdasda-dasdasd-dasdsad",
-        name: "Test",
-        email: "test@gmail.com",
-        avatar: "/img/profile-picture-5.jpg",
-        friends: [],
-        phone: "(19) 98917-7880"
-    }
+    const postsCtx = usePosts();
+
+    
 
     const usrContext = useContext(UserContext)!;
 
@@ -29,19 +25,10 @@ const Feed = () => {
             <Col>
                 <FastPost />
 
-            
-                <Post
-                    post={{
-                        author: testUser,
-                        body: "Texto para testar o post de teste",
-                        createdAt: "2024-22-09",
-                        updatedAt: "2024-22-09",
-                        dislikes: 0,
-                        likes: 0,
-                        id: "27388181-23823783-283823"
-                    }}
-                    key={1}
-                />
+
+                {postsCtx.posts.map((post) => (
+                    <Post post={post} key={`${post.id}`} />
+                ))}
             </Col>
         </div>
     );

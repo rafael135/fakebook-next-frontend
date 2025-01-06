@@ -6,11 +6,12 @@ import { NextRequest, NextResponse } from "next/server";
 const PUBLIC_FILE = /\.(.*)$/;
 
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
 
     const { pathname, origin } = request.nextUrl;
 
-    const token = cookies().get("loggedUserToken");
+    const requestCookies = await cookies();
+    const token = requestCookies.get("loggedUserToken");
 
     if(token == null || token.value == "") {
         return NextResponse.redirect(`${origin}/login`);

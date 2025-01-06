@@ -12,7 +12,8 @@ const SideMenu = () => {
         <aside
             className={`${styles.sideMenu}`}
             style={{
-                borderWidth: (menuCtx.showSideMenu) ? "1px" : "0"
+                borderWidth: (menuCtx.showSideMenu) ? "1px" : "0",
+                width: (menuCtx.showSideMenu) ? "280px" : "0"
             }}
         >
             <nav>

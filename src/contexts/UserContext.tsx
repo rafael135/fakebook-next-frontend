@@ -24,8 +24,13 @@ export const UserContextProvider = ({ children }: { children: ReactNode }) => {
 
         if(initialized == false) {
             setInitialized(true);
-            dispatchLoggedUser({ type: "initialize", payload: JSON.parse(sessionStorage.getItem(LOGGED_USER_KEY) ?? "{}") });
-
+            let userObject: UserType | null = JSON.parse(sessionStorage.getItem(LOGGED_USER_KEY) ?? "{}");
+            if(userObject!.hasOwnProperty("id") != true) {
+                userObject = null
+            }
+            
+            dispatchLoggedUser({ type: "initialize", payload: userObject });
+            
             setToken(sessionStorage.getItem(LOGGED_USER_TOKEN_KEY));
         }
 

@@ -1,15 +1,16 @@
 import styles from "./Post.module.scss";
-import Col from "../Col"
+//import Col from "../Col"
 import Row from "../Row";
 import Image from "next/image";
 import { PostType } from "@/types/Post";
 import ButtonWidget from "@/components/Pages/Feed/Components/ButtonWidget";
-import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
+//import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import React, { useContext } from "react";
 import { UserContext } from "@/contexts/UserContext";
-import { IoShareSocial } from "react-icons/io5";
+//import { IoShareSocial } from "react-icons/io5";
 import { ThumbsUp, ThumbsDown, Share2 } from "lucide-react";
-import Label from "@/components/Atoms/Label";
+//import Label from "@/components/Atoms/Label";
+import { PostContext, usePosts } from "@/contexts/PostContext";
 
 
 type props = {
@@ -20,12 +21,31 @@ type props = {
 const PostComponent = ({ className, post }: props) => {
 
     const userCtx = useContext(UserContext)!;
+    const postsCtx = usePosts();
+
+    const isLogged = userCtx.loggedUser != null;
+    const isSameUser = isLogged == true && post.author.id == userCtx.loggedUser!.id;
 
     const handleLikeClick = () => {
+        /*if(isLogged == false) {
+            return;
+        }*/
 
+        if(post.liked == true) {
+            postsCtx.dispatchPosts({
+                type: "dislike",
+                payload: post
+            });
+            return;
+        }
+
+        postsCtx.dispatchPosts({
+            type: "like",
+            payload: post
+        });
     }
 
-    const handleDislikeClick = () => {
+    const handleShareClick = () => {
 
     }
 
@@ -43,7 +63,7 @@ const PostComponent = ({ className, post }: props) => {
                     />
 
                     <div className={styles.authorName}>
-                        {post.author.name}
+                        {(isSameUser) ? "Você" : post.author.name}
                     </div>
                 </Row>
             </div>
@@ -58,37 +78,23 @@ const PostComponent = ({ className, post }: props) => {
                 <div className={styles.footerActions}>
 
                     <ButtonWidget
-                        className={`${styles.likeButton}`}
+                        className={`${styles.likeButton} ${(post.liked) ? styles.liked : ""}`}
                         type="ghost"
                         onClick={handleLikeClick}
-                        title="Like"
+                        title="Curtir"
                     >
                         
-                        <ThumbsUp className="h-5 w-5" />
+                        <ThumbsUp className="h-5 w-5" strokeWidth={0} />
                         {post.likes}
                     </ButtonWidget>
 
-
-
                     <ButtonWidget
-                        onClick={handleDislikeClick}
-                        type="ghost"
-                        className={styles.dislikeButton}
-                        title="Dislike"
-                    >
-                        <ThumbsDown className="h-5 w-5" />
-                        {post.dislikes}
-                    </ButtonWidget>
-
-
-
-                    <ButtonWidget
-                        onClick={handleDislikeClick}
+                        onClick={handleShareClick}
                         type="ghost"
                         className={styles.shareButton}
-                        title="Dislike"
+                        title="Compartilhar"
                     >
-                        <Share2 className="h-5 w-5" />
+                        <Share2 className="h-5 w-5" strokeWidth={0} />
                         Compartilhar
                     </ButtonWidget>
 
@@ -99,7 +105,8 @@ const PostComponent = ({ className, post }: props) => {
 }
 
 const Post = React.memo(PostComponent, (prevProps, nextProps) => {
-    return prevProps.post.id != nextProps.post.id;
+    return prevProps.post.id != nextProps.post.id ||
+        prevProps.post.likes != nextProps.post.likes
 });
 
 export default Post;

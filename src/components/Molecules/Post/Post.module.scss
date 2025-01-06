@@ -32,7 +32,9 @@
                     flex: 1;
                     @apply items-center transition-all;
 
-
+                    svg {
+                        @apply fill-slate-800;
+                    }
                 }
                 
                 .likeButton {
@@ -43,15 +45,6 @@
                         }
                     }
                     
-                }
-                
-                .dislikeButton {
-
-                    &.disliked {
-                        svg {
-                            @apply fill-red-600 !important;
-                        }
-                    }
                 }
 
                 .shareButton {

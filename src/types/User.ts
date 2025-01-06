@@ -3,11 +3,11 @@ import { UserRelationType } from "./UserRelation";
 
 
 
-export type UserType = {
+export interface UserType extends Object {
     id: string;
     avatar: string | null;
     name: string;
     email: string;
     phone: string;
     friends: UserRelationType[];
-};
+}

@@ -1,12 +1,12 @@
 import { UserType } from "./User";
 
 
-export type PostType = {
+export interface PostType extends Object {
     id: string;
     author: UserType;
     body: string;
     likes: number;
-    dislikes: number;
     createdAt: string;
     updatedAt: string;
+    liked: boolean;
 };

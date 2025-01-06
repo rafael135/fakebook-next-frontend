@@ -13,7 +13,7 @@ export type UserReducerType = (prevState: UserType | null, action: UserReducerAc
 
 export type PostReducerActionType = {
     payload: PostType | PostType[];
-    type: "initialize" | "add" | "delete";
+    type: "initialize" | "add" | "delete" | "like" | "dislike";
 }
 
 export type PostReducerType = (prevState: PostType[], action: PostReducerActionType) => PostType[];

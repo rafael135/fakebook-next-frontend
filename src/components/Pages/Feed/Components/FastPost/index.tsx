@@ -1,6 +1,6 @@
 import TextInput from "@/components/Atoms/TextInput";
 import styles from "./FastPost.module.scss"
-import { useState } from "react";
+import React, { useState } from "react";
 import Form from "@/components/Atoms/Form";
 import ButtonWidget from "../ButtonWidget";
 import { CiImageOn, CiCalendar } from "react-icons/ci";
@@ -13,7 +13,7 @@ type props = {
 
 };
 
-const FastPost = () => {
+const FastPostComponent = () => {
     const [search, setSearch] = useState("");
 
 
@@ -62,30 +62,35 @@ const FastPost = () => {
 
             <div className={`${styles.footer}`}>
                 <ButtonWidget
+                    type="ghost"
                     onClick={handleImage}
                 >
                     <CiImageOn className="h-7 w-auto" />
                 </ButtonWidget>
 
                 <ButtonWidget
+                    type="ghost"
                     onClick={handleVideo}
                 >
                     <BsCameraVideo className="h-7 w-auto" />
                 </ButtonWidget>
 
                 <ButtonWidget
+                    type="ghost"
                     onClick={handleEmoji}
                 >
                     <BsEmojiSmile className="h-7 w-auto" />
                 </ButtonWidget>
 
                 <ButtonWidget
+                    type="ghost"
                     onClick={handleCalendar}
                 >
                     <CiCalendar className="h-7 w-auto" />
                 </ButtonWidget>
 
                 <ButtonWidget
+                    type="ghost"
                     onClick={handleLocation}
                 >
                     <TfiTarget className="h-7 w-auto" />
@@ -95,6 +100,8 @@ const FastPost = () => {
         </div>
     );
 }
+
+const FastPost = React.memo(FastPostComponent);
 
 
 export default FastPost;
